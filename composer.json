@@ -1,0 +1,17 @@
+{
+    "name": "hyzab/area",
+    "autoload": {
+        "psr-4": {
+            "Hyzab\\Area\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "wyvesti",
+            "email": "wyvesti69@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
