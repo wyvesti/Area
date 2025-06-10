@@ -2,7 +2,7 @@
     "name": "hyzab/area",
     "autoload": {
         "psr-4": {
-            "Hyzab\\Area\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
