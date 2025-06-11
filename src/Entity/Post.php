@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-class Article {
+class Post {
     private ?int $id;
     private string $title;
     private string $content;
@@ -45,7 +45,7 @@ class Article {
         return $this;
     }
 
-    public function getPicture(): string {
+    public function getPicture(): ?string {
         return $this->picture;
     }
 

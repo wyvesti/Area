@@ -1,11 +1,11 @@
 <?php
 
-namespace App\View\Part; // nom de l'espace : App\View\Part
+namespace App\View\Part;
 
 class Header {
-    public static string $pageTitle = ""; // titre modifiable par les contrôleurs
+    public static string $pageTitle = "";
 
-    public function render() { // méthode pour afficher l’en-tête
+    public function render() {
         ?>
         <!DOCTYPE html>
         <html lang="en">
