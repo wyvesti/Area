@@ -3,14 +3,17 @@
 namespace App\Core;
 use App\View\ErrorView;
 
-class Router {
+class Router
+{
     private array $routes;
 
-    public function __construct(array $routes) {
+    public function __construct(array $routes)
+    {
         $this->routes = $routes;
     }
 
-    public function init() {
+    public function init()
+    {
         $currentPath = $_SERVER['PATH_INFO'] ?? "";
 
         foreach ($this->routes as $path => $controller) {

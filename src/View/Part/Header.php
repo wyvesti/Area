@@ -2,22 +2,26 @@
 
 namespace App\View\Part;
 
-class Header {
+class Header
+{
     public static string $pageTitle = "Welcome";
 
-    public function render() {
+    public function render()
+    {
         ?>
         <!DOCTYPE html>
         <html lang="en">
+
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="style.css">
-            <title><?= self::$pageTitle ?></title> <!-- titre dynamique -->
+            <title><?= self::$pageTitle ?></title>
         </head>
+
         <body>
-            <header class=" main-header">Mon Header
-                <nav> <!-- menu de navigation -->
+            <header class=" main-header">
+                <nav>
                     <a href="/">Acceuil</a>
                     <a href="/add">Rajouter un post</a>
                     <a href="/category">Category</a>
@@ -30,7 +34,7 @@ class Header {
                     <button>Go</button>
                 </form> -->
             </header>
-        <?php
+            <?php
     }
 }
 

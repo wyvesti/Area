@@ -2,11 +2,16 @@
 
 namespace App\View\Part;
 
-class Footer {
-    public function render() {
+class Footer
+{
+    public function render()
+    {
         ?>
-        <footer class="main-footer"></footer> <!-- contenu du footer -->
+        <footer class="main-footer">
+            <lla>Pallallalallalalalalalalaa quel footer</p>
+        </footer>
         </body>
+
         </html>
         <?php
     }

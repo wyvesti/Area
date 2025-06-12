@@ -4,10 +4,11 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use App\Repository\Database;
-class CategoryRepository {
+class CategoryRepository
+{
 
-    // Pour de trouve par son id
-    public function findById(int $id): ?Category {
+    public function findById(int $id): ?Category
+    {
 
         $connection = Database::connect();
 
@@ -27,8 +28,8 @@ class CategoryRepository {
         return null;
     }
 
-    //methode pour sortire tout les category
-    public function findAll(): array {
+    public function findAll(): array
+    {
 
         $list = [];
 

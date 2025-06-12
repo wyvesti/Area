@@ -12,7 +12,8 @@ class CategoryView extends BaseView
         private array $categories,
         private ?Category $selectedCategory,
         private array $posts
-    ) {}
+    ) {
+    }
 
     protected function content(): void
     {
@@ -32,11 +33,11 @@ class CategoryView extends BaseView
             } else {
                 foreach ($this->posts as $post) {
                     echo "<div class='post-preview'>";
-echo "<h3>" . $post->getTitle() . "</h3>";
-echo "<p>" . $post->getContent() . "</p>";
-echo "<p>Posté le : " . $post->getCreatedAt() . "</p>";
-echo "<img src='" . $post->getPicture() . "' alt=''>";
-echo "</div>";
+                    echo "<h3>" . $post->getTitle() . "</h3>";
+                    echo "<p>" . $post->getContent() . "</p>";
+                    echo "<p>Posté le : " . $post->getCreatedAt() . "</p>";
+                    echo "<img src='" . $post->getPicture() . "' alt=''>";
+                    echo "</div>";
                 }
             }
         }

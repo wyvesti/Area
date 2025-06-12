@@ -10,25 +10,27 @@ use App\View\AddView;
 use App\View\RedirectView;
 use App\View\ErrorView;
 
-class AddController extends BaseController {
+class AddController extends BaseController
+{
 
-    protected function doGet(): \App\Core\BaseView {
-        return new AddView(); // Affiche le formulaire vide
+    protected function doGet(): \App\Core\BaseView
+    {
+        return new AddView();
     }
 
-    protected function doPost(): \App\Core\BaseView {
-        // Récupération sécurisée des champs
+    protected function doPost(): \App\Core\BaseView
+    {
         $title = $_POST['title'] ?? null;
         $content = $_POST['content'] ?? null;
-        $userId = 1; // Exemple en attendant le système d'authentification
+        $userId = 1;
         $categoryId = $_POST['category'] ?? null;
 
         $picture = null;
 
-        // Gestion du fichier image (optionnel)
         if (!empty($_FILES["picture"]) && $_FILES["picture"]["error"] === UPLOAD_ERR_OK) {
             $uploadDir = __DIR__ . "/../../public/uploads/";
-            if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+            if (!is_dir($uploadDir))
+                mkdir($uploadDir, 0777, true);
 
             $fileName = uniqid() . "_" . basename($_FILES["picture"]["name"]);
             $targetFile = $uploadDir . $fileName;
@@ -38,7 +40,6 @@ class AddController extends BaseController {
             }
         }
 
-        // Validation minimale
         if (empty($title) || empty($content)) {
             return new AddView("Title and content are required");
         }
@@ -46,13 +47,13 @@ class AddController extends BaseController {
         $post = new Post($title, $content, $picture, null, $userId);
 
         if ($categoryId && is_numeric($categoryId)) {
-            //$post->setCategoryId((int)$categoryId); // À adapter selon ta méthode (setCategory ou setCategoryId)
+            //$post->setCategoryId((int)$categoryId)
             $categoryRepo = new CategoryRepository();
-$category = $categoryRepo->findById((int)$categoryId);
+            $category = $categoryRepo->findById((int) $categoryId);
 
-if ($category) {
-    $post->setCategory($category);
-}
+            if ($category) {
+                $post->setCategory($category);
+            }
 
         }
 

@@ -5,14 +5,16 @@ namespace App\Repository;
 use App\Entity\Post;
 use App\Repository\Database;
 
-class PostRepository {
+class PostRepository
+{
 
-    public function findAll(): array {
-        $list = []; // tableau vide pour stocker
-        $connection = Database::connect(); // connexion à la base de données
+    public function findAll(): array
+    {
+        $list = [];
+        $connection = Database::connect();
 
-        $preparedQuery = $connection->prepare("SELECT * FROM post"); // Requête SQL : sélectionne toutes les colonnes de tous
-        $preparedQuery->execute(); // Exécute la requête
+        $preparedQuery = $connection->prepare("SELECT * FROM post");
+        $preparedQuery->execute();
 
         $categoryRepository = new CategoryRepository();
 
@@ -24,7 +26,7 @@ class PostRepository {
                 $line["content"],
                 $line["picture"],
                 $line["created_at"],
-    $line["user_id"]
+                $line["user_id"]
             );
             $post->setId($line["id"]);
             $post->setCreatedAt($line["created_at"]);
@@ -33,10 +35,11 @@ class PostRepository {
             $list[] = $post;
         }
 
-        return $list; // Retourne la liste complète
+        return $list;
     }
 
-    public function findById(int $id): ?Post {
+    public function findById(int $id): ?Post
+    {
         $connection = Database::connect();
         $preparedQuery = $connection->prepare("SELECT * FROM post WHERE id=:id");
 
@@ -53,10 +56,10 @@ class PostRepository {
                 $line["content"],
                 $line["picture"],
                 $line["created_at"],
-    $line["user_id"]
+                $line["user_id"]
             );
             $post->setId($line["id"]);
-          //  $post->setCreatedAt($line["created_at"]);
+            //  $post->setCreatedAt($line["created_at"]);
             $post->setCategory($category);
 
             return $post;
@@ -65,7 +68,8 @@ class PostRepository {
     }
 
 
-    public function delete(int $id): bool {
+    public function delete(int $id): bool
+    {
         $connection = Database::connect();
 
         $preparedQuery = $connection->prepare("DELETE FROM post WHERE id=:id");
@@ -75,7 +79,8 @@ class PostRepository {
         return $preparedQuery->rowCount() > 0;
     }
 
-    public function findByCategoryId(int $categoryId): array {
+    public function findByCategoryId(int $categoryId): array
+    {
         $connection = Database::connect();
 
         $prepareQuery = $connection->prepare("SELECT * FROM post WHERE category_id = :id");
@@ -84,7 +89,7 @@ class PostRepository {
 
         $list = [];
 
-        while($line = $prepareQuery->fetch(\PDO::FETCH_ASSOC)){
+        while ($line = $prepareQuery->fetch(\PDO::FETCH_ASSOC)) {
             $post = new Post(
                 $line["title"],
                 $line["content"],
@@ -103,13 +108,12 @@ class PostRepository {
         return $list;
     }
 
-    // Met à jour les informations existant
-    public function update(Post $post): bool {
+    public function update(Post $post): bool
+    {
         $connection = Database::connect();
 
         $preparedQuery = $connection->prepare("UPDATE post SET title=:title, content=:content, picture=:picture, user_id = :user_id WHERE id=:id");
 
-        // Injection des valeurs à mettre à jour
         $preparedQuery->bindValue(":title", $post->getTitle());
         $preparedQuery->bindValue(":content", $post->getContent());
         $preparedQuery->bindValue(":picture", $post->getPicture());
@@ -118,26 +122,25 @@ class PostRepository {
 
         $preparedQuery->execute();
 
-        // Retourne si une ligne a été modifiée
         return $preparedQuery->rowCount() > 0;
     }
 
-    public function persist(Post $post): void {
+    public function persist(Post $post): void
+    {
         $connection = Database::connect();
         $preparedQuery = $connection->prepare("
             INSERT INTO post (title, content, picture, created_at, user_id, category_id)
             VALUES (:title, :content, :picture, :createdAt, :userId, :categoryId)
         ");
         $preparedQuery->bindValue(":title", $post->getTitle());
-    $preparedQuery->bindValue(":content", $post->getContent());
-    $preparedQuery->bindValue(":picture", $post->getPicture());
-    $preparedQuery->bindValue(":createdAt", $post->getCreatedAt()); // string format
-    $preparedQuery->bindValue(":userId", $post->getUserId());
-    $preparedQuery->bindValue(":categoryId", $post->getCategory()?->getId());
+        $preparedQuery->bindValue(":content", $post->getContent());
+        $preparedQuery->bindValue(":picture", $post->getPicture());
+        $preparedQuery->bindValue(":createdAt", $post->getCreatedAt());
+        $preparedQuery->bindValue(":userId", $post->getUserId());
+        $preparedQuery->bindValue(":categoryId", $post->getCategory()?->getId());
 
-    $preparedQuery->execute();
+        $preparedQuery->execute();
 
-    // Récupère l'id auto-généré et le met dans ton objet
-    $post->setId($connection->lastInsertId());
-}
+        $post->setId($connection->lastInsertId());
+    }
 }
