@@ -2,20 +2,29 @@
 
 namespace App\Entity;
 
+use App\Entity\Category;
+
 class Post {
     private ?int $id;
     private string $title;
     private string $content;
     private ?string $picture;
+    private \DateTime $createdAt;
+    private ?Category $category = null;
+    private int $userId;
 
     public function __construct(
         string $title,
         string $content,
-        ?string $picture
+        ?string $picture,
+        ?string $createdAt = null,
+        int $userId
     ){
         $this->title = $title;
         $this->content = $content;
         $this->picture = $picture;
+        $this->createdAt = new \DateTime($createdAt ?? 'now');
+        $this->userId = $userId;
     }
 
     public function getId(): ?int {
@@ -54,4 +63,29 @@ class Post {
         return $this;
     }
 
+
+public function setCreatedAt(string $datetime): void {
+    $this->createdAt = new \DateTime($datetime);
+}
+
+public function getCreatedAt(): string {
+    return $this->createdAt->format('d/m/Y H:i');
+}
+
+public function setCategory(Category $category): self {
+    $this->category = $category;
+    return $this;
+}
+
+public function getCategory(): ?Category {
+    return $this->category;
+}
+
+public function getUserId(): int {
+        return $this->userId;
+    }
+
+    public function setUserId(int $userId): void {
+        $this->userId = $userId;
+    }
 }

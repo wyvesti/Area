@@ -1,0 +1,156 @@
+/*
+Fichier : public/css/style.css
+Thème : Classique "site d'actualité" avec teinte violet/bleu royal
+*/
+
+/* ----- Variables globales ----- */
+:root {
+    --main-bg: #f4f4f9;
+    --primary-color: #6F04D9; /* violet profond */
+    --accent-color: #0597F2; /* bleu royal */
+    --text-color: #333;
+    --light-text: #666;
+    --card-bg: #fff;
+    --border-color: #ddd;
+}
+
+/* ----- Base ----- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-bg);
+    color: var(--text-color);
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+}
+
+/* ----- Header ----- */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+}
+
+header nav {
+    margin-top: 0.5rem;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+header form {
+    margin-top: 1rem;
+}
+
+/* ----- Footer ----- */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* ----- Liens ----- */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ----- Formulaires ----- */
+form {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    margin: 2rem 0;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    max-width: 600px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="file"],
+form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form button, input[type="button"] {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+form button:hover, input[type="button"]:hover {
+    background-color: #037ccc;
+}
+
+/* ----- Listes et categories ----- */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* ----- Cartes de post ----- */
+.post-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.post-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* ----- Message d'erreur ----- */
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* ----- Page d'accueil ----- */
+.home-post-list a {
+    display: block;
+    background-color: var(--card-bg);
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.home-post-list a:hover {
+    background-color: #eef5ff;
+}

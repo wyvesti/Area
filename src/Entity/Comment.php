@@ -38,5 +38,4 @@ class Comment {
     {
         return $this->createdAt;
     }
-
 }

@@ -3,7 +3,7 @@
 namespace App\View\Part;
 
 class Header {
-    public static string $pageTitle = "";
+    public static string $pageTitle = "Welcome";
 
     public function render() {
         ?>
@@ -12,23 +12,23 @@ class Header {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>My dogs - <?= self::$pageTitle ?></title> <!-- titre dynamique -->
+            <link rel="stylesheet" href="style.css">
+            <title><?= self::$pageTitle ?></title> <!-- titre dynamique -->
         </head>
         <body>
-            <header>Mon Header
+            <header class=" main-header">Mon Header
                 <nav> <!-- menu de navigation -->
-                    <a href="/">Home</a>
-                    <a href="/add-dog">Add dog</a>
-                    (<a href="/person">Person</a>
-                    <a href="/about">About</a>)
+                    <a href="/">Acceuil</a>
+                    <a href="/add">Rajouter un post</a>
+                    <a href="/category">Category</a>
                 </nav>
 
-                <form action="/search" method="get"> <!-- formulaire de recherche -->
+                <!--<form action="/search" method="get"> 
                     <label>Search :
                         <input type="text" name="keyword">
                     </label>
                     <button>Go</button>
-                </form>
+                </form> -->
             </header>
         <?php
     }

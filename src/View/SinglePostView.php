@@ -12,17 +12,27 @@ class SinglePostView extends BaseView {
 
     protected function content(): void{
         ?>
-        <h1><?= $this->post->getTitle() ?></h1>
-        <p><?= $this->post->getContent() ?></p>
-        <p><?= $this->post->getPicture() ?></p>
+        <div class="post-preview">
+    <h1><?= $this->post->getTitle() ?></h1>
+    <p><?= $this->post->getContent() ?></p>
+    <p>Posté le : <?= $this->post->getCreatedAt() ?></p>
+    <img src="<?= $this->post->getPicture() ?>" alt="Image du post">
+    <p>
+        Catégorie :
+        <a href="/category?id=<?= $this->post->getCategory()?->getId() ?>">
+            <?= $this->post->getCategory()?->getName() ?>
+        </a>
+    </p>
+    <form method="post">
+        <button>Delete</button>
+    </form>
+    <a href="/update?id=<?= $this->post->getId() ?>" class="button-link">Update</a>
+</div>
 
-        <form method="post">
-            <button>Delete</button>
-        </form>
         <?php
+
+        
     }
 }
-/* Lien pour accéder à la page de mise à jour 
-        <a href="/update-dog?id=<?= $this->dog->getId()?>">Update</a> */
 
 

@@ -13,7 +13,16 @@ class HomeView extends BaseView {
 
     protected function content(): void{
         foreach ($this->post as $post) {
-            echo "<a href='/post?id=" . $post->getId() . "'>" . $post->getTitle() . $post->getContent() . $post->getPicture() . "</a>";
+            echo "<div class='post-preview'>";
+    echo "<a href='/post?id=" . $post->getId() . "'>";
+    echo "<h2>" . $post->getTitle() . "</h2>";
+    echo "<p>" . $post->getContent() . "</p>";
+    echo "<img src='" . $post->getPicture() . "' alt=''>";
+    echo "</a></div>";
         }
+        ?>
+        <input type="button" value="+" onclick="window.location='/add';">
+
+        <?php
     }
 }
