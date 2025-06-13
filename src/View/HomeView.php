@@ -23,7 +23,6 @@ class HomeView extends BaseView
             echo "</a></div>";
         }
         ?>
-        <input type="button" value="+" onclick="window.location='/add';">
 
         <?php
     }

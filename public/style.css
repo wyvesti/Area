@@ -1,7 +1,4 @@
-/*
-Fichier : public/css/style.css
-Thème : Classique "site d'actualité" avec teinte violet/bleu royal
-*/
+
 
 /* ----- Variables globales ----- */
 :root {
@@ -12,6 +9,7 @@ Thème : Classique "site d'actualité" avec teinte violet/bleu royal
     --light-text: #666;
     --card-bg: #fff;
     --border-color: #ddd;
+    
 }
 
 /* ----- Base ----- */
@@ -110,7 +108,6 @@ form button:hover, input[type="button"]:hover {
 /* ----- Listes et categories ----- */
 ul {
     list-style-type: none;
-    padding: 0;
 }
 
 li {

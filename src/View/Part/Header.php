@@ -25,6 +25,7 @@ class Header
                     <a href="/">Acceuil</a>
                     <a href="/add">Rajouter un post</a>
                     <a href="/category">Category</a>
+                    <input type="button" value="+" onclick="window.location='/add';">
                 </nav>
 
                 <!--<form action="/search" method="get"> 
